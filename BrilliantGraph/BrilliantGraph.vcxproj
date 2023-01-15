@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\BrilliantGraph.h" />
+    <ClInclude Include="..\include\AdjacencyList.h" />
+    <ClInclude Include="..\include\detail\AdjacencyListImpl.h" />
+    <ClInclude Include="..\include\detail\MapInterface.h" />
+    <ClInclude Include="..\include\detail\SetInterface.h" />
+    <ClInclude Include="..\include\StorageGen.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

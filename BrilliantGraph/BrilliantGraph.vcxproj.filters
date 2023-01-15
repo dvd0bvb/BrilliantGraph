@@ -15,7 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\BrilliantGraph.h">
+    <ClInclude Include="..\include\AdjacencyList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\detail\MapInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\detail\SetInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\StorageGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\detail\AdjacencyListImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
