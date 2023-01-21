@@ -39,7 +39,7 @@ namespace Brilliant
                 auto& AddVertex(const_reference vert)
                 {
                     auto result = list.emplace(vert, edge_set{});
-                    if constexpr (std::is_same_v<adjacency_list::iterator, std::decay_t<decltype(result)>>)
+                    if constexpr (std::is_same_v<typename adjacency_list::iterator, std::decay_t<decltype(result)>>)
                     {
                         return *result;
                     }
@@ -53,7 +53,7 @@ namespace Brilliant
                 auto& EmplaceVertex(Args&&... args)
                 {
                     auto result = list.emplace(std::piecewise_construct, std::forward_as_tuple(args...), std::forward_as_tuple(edge_set{}));
-                    if constexpr (std::is_same_v<adjacency_list::iterator, std::decay_t<decltype(result)>>)
+                    if constexpr (std::is_same_v<typename adjacency_list::iterator, std::decay_t<decltype(result)>>)
                     {
                         return *result;
                     }
@@ -143,7 +143,7 @@ namespace Brilliant
                 }
 
             private:
-                void RemoveEdge(adjacency_list::iterator from, adjacency_list::iterator to)
+                void RemoveEdge(typename adjacency_list::iterator from, typename adjacency_list::iterator to)
                 {
                     if (auto found = FindInEdges(from, to); found != from->second.end())
                     {
@@ -151,12 +151,12 @@ namespace Brilliant
                     }
                 }
 
-                void RemoveAllEdges(adjacency_list::iterator vert)
+                void RemoveAllEdges(typename adjacency_list::iterator vert)
                 {
                     vert->second.clear();
                 }
 
-                void RemoveVertex(adjacency_list::iterator vert)
+                void RemoveVertex(typename adjacency_list::iterator vert)
                 {
                     //find all other vertices such that they have edges to vert and erase vert
                     for (auto iter = list.begin(), end = list.end(); iter != end; ++iter)
@@ -174,7 +174,7 @@ namespace Brilliant
                     list.erase(vert);
                 }
 
-                auto FindInEdges(adjacency_list::iterator from, adjacency_list::iterator to_find)
+                auto FindInEdges(typename adjacency_list::iterator from, typename adjacency_list::iterator to_find)
                 {
                     //for some reason std::ranges::find doesn't like when edge_set is a mappish type
                     //assuming it expects a pair for the search object?
