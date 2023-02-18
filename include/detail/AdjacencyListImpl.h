@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include <StorageGen.h>
 #include <detail/MapInterface.h>
 
@@ -111,6 +112,11 @@ namespace Brilliant
                     {
                         RemoveAllEdges(found);
                     }
+                }
+
+                bool HasVertex(const_reference vert)
+                {
+                    return this->list.find(vert) != this->list.end();
                 }
 
                 bool HasEdge(const_reference from, const_reference to)

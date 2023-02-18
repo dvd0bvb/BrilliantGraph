@@ -34,12 +34,15 @@ namespace Brilliant
 
             using edge_type = typename base::edge;
 
+            template<class E = edge_type>
             bool AddEdge(const_reference from, const_reference to)
+            requires requires { std::is_default_constructible_v<E>; }
             {
                 if (auto found_from = this->list.find(from), found_to = this->list.find(to);
                     found_from != this->list.end() && found_to != this->list.end())
                 {
                     found_from->second.emplace(&found_to->first, edge_type{});
+                    return true;
                 }
                 return false;
             }
@@ -50,6 +53,7 @@ namespace Brilliant
                     found_from != this->list.end() && found_to != this->list.end())
                 {
                     found_from->second.emplace(&found_to->first, edge);
+                    return true;   
                 }
                 return false;
             }
@@ -61,6 +65,7 @@ namespace Brilliant
                     found_from != this->list.end() && found_to != this->list.end())
                 {
                     found_from->second.try_emplace(&found_to->first, std::forward<Args>(args)...);
+                    return true;
                 }
                 return false;
             }
